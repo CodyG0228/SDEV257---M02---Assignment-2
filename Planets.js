@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, StatusBar, FlatList, StyleSheet } from "react-native";
+import { View, Text, Button, StatusBar, FlatList } from "react-native";
 import styles from "./styles"; 
+import Search from "./Search";
 
 const PLANETS_API = "https://www.swapi.tech/api/planets";
 
@@ -29,11 +30,21 @@ export default function Planets({ navigation }) {
     };
 
     if (loading) {
-        return <View style={styles.container}><Text>Fetching Planets from SWAPI</Text></View>;
+        return (
+            <View style={styles.container}>
+                <Search />
+                <Text>Fetching Planets from SWAPI</Text>
+            </View>
+        );
     }
 
     if (error) {
-        return <View style={styles.container}><Text>Error fetching Planets from SWAPI: {error}</Text></View>;
+        return (
+            <View style={styles.container}>
+                <Search />
+                <Text>Error fetching Planets from SWAPI: {error}</Text>
+            </View>
+        );
     }
 
     const renderPlanet = ({ item }) => (
@@ -43,6 +54,7 @@ export default function Planets({ navigation }) {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" />
+            <Search />
             <Text style={styles.header}>Star Wars Planets</Text>
             
             <FlatList 

@@ -19,5 +19,32 @@ export default StyleSheet.create({
     borderBottomWidth: 1, 
     borderColor: '#ccc',
   },
+  textInputContainer: {
+    alignSelf: "stretch",
+    marginBottom: 30,
+  },
+
+  textInputLabel: {
+    marginBottom: 4,
+  },
+
+  textInput: {
+    backgroundColor: "white",
+    height: 20,
+    fontSize: 11,
+  },
+  searchContainer: {
+    alignSelf: "stretch",
+    paddingHorizontal: 20,
+    marginBottom: 20,
+  },
+  searchInput: {
+    backgroundColor: "white",
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 6,
+    height: 40,
+    paddingHorizontal: 12,
+  },
 });
 

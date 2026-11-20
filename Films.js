@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, StatusBar, FlatList, StyleSheet } from "react-native";
+import { View, Text, Button, StatusBar, FlatList } from "react-native";
 import styles from "./styles";
+import Search from "./Search";
 
 const FILMS_API = "https://www.swapi.tech/api/films";
 
@@ -40,6 +41,7 @@ export default function Films({ navigation }) {
     if (loading) {
         return (
             <View style={styles.container}>
+                <Search />
                 <Text>Returning (pun) Films</Text>
             </View>
         );
@@ -48,6 +50,7 @@ export default function Films({ navigation }) {
     if (error) {
         return (
             <View style={styles.container}>
+                <Search />
                 <Text>Ran into an issue: {error}</Text>
             </View>
         );
@@ -60,6 +63,7 @@ export default function Films({ navigation }) {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" />
+            <Search />
             <Text style={styles.header}>Star Wars Movies</Text>
 
             <FlatList

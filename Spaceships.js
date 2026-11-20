@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, StatusBar, FlatList, StyleSheet } from "react-native";
+import { View, Text, Button, StatusBar, FlatList } from "react-native";
 import styles from "./styles"; 
+import Search from "./Search";
 
 const SPACESHIPS_API = "https://www.swapi.tech/api/starships";
 
@@ -29,11 +30,21 @@ export default function Spaceships({ navigation }) {
     };
 
     if (loading) {
-        return <View style={styles.container}><Text>Loading Spaceships from SWAPI</Text></View>;
+        return (
+            <View style={styles.container}>
+                <Search />
+                <Text>Loading Spaceships from SWAPI</Text>
+            </View>
+        );
     }
 
     if (error) {
-        return <View style={styles.container}><Text>Error fetching data: {error}</Text></View>;
+        return (
+            <View style={styles.container}>
+                <Search />
+                <Text>Error fetching data: {error}</Text>
+            </View>
+        );
     }
 
     const renderShip = ({ item }) => (
@@ -43,6 +54,7 @@ export default function Spaceships({ navigation }) {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="dark-content" />
+            <Search />
             <Text style={styles.header}>Star Wars Spaceships</Text>
             
             <FlatList 
